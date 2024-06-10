@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function index() {
-        $books = Book::all();
-        dd($books);
-        return view('books');
+    public function index()
+    {
+        $bookTitles = Book::all()->pluck('title');
+        // dd($bookTitles);
+        return view('books', compact('bookTitles'));
     }
 }
